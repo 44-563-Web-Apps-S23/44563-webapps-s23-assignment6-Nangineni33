@@ -8,33 +8,36 @@
 <h2>Painter entry by Gayathri Nangineni</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="form1_age">The hidden painter name</label>
+    <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="Monet"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
+    <label for="form1_nick">Guess the painter</label>
     <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="checkPainter()" value="Check the guess">
 </form>
 
 
 <p id="result">This text will be replaced </p>
 
 <script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
+  var good=0;
+  var oops=0;
+  function checkPainter(){
+    var Val1 = document.getElementById("form1_age").value;
+    var Val2 = document.getElementById("form1_nick").value;
+    if(val1==val2){
+        good+=1;
+        alert("You got it right");
+        good=document.getElementById("result").innerHTML;
     }
-}
+    else{
+        oops+=1;
+        alert("Sorry");
+        oops=document.getElementById("result").innerHTML;
+    }
+  }
+
 </script>
 
 </body>
