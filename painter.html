@@ -51,7 +51,25 @@
     out.innerHTML = "correct: " + good + " " + "wrong: " + oops;
   }
 
-
+</script>
+<div class="container">
+    <img src="Arengelora.jpg" height="100" width="100" onclick="selectImage()" id="image" alt="Arengelora plant">
+</div>
+<script>
+    useImage=1;
+    function selectImage(){
+        switch(useImage){
+            case 1: document.getElementById("image").src="nepata.jpg"
+                    useImage++;
+                    break;
+            case 2:document.getElementById("image").src="gardenia.jpg"
+                    useImage++;
+                    break;
+            case 3:document.getElementById("image").src="Arengelora.jpg"
+                   useImage=1;
+                   break;
+        }
+    }
 </script>
 
 </body>

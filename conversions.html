@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Conversions</title>
+ </head>
+<body>
+
+<h2>Gayathri shows currency conversions</h2>
+
+<form>
+    <label for="baseElement">Enter base amount</label>
+    <input type ="number" id="baseElement" name="baseElement" min=10 max=50 step=2 value=50> <br>
+
+    <label for="conversionalElement">What is your nickname </label>
+    <input type ="number" id="conversionalElement" name="conversionalElement" value=35 autofocus> <br>
+
+    <input type="button" onclick="convert()" value="Show conversions">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script>
+function convert(){
+baseElement = document.getElementById("baseElement").value;
+conversionalElement = document.getElementById("conversionalElement").value;
+toShow = " ";
+for(let i=0;i<5;i++){
+
+    let conversion = baseElement*conversionalElement;
+        toShow = toShow+" "+ baseElement +" is "+ conversion.toFixed(1)+";";
+        baseElement = baseElement*2
+    }
+    document.getElementById("result").innerHTML = "Conversions are:" + toShow;
+}
+</script>
+</body>
+</html> 
