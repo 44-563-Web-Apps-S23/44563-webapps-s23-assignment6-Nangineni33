@@ -1,38 +1,94 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <title>Conversions</title>
- </head>
+    <head>
+        <title>Conversions Page</title>
+    </head>
+ 
 <body>
 
-<h2>Gayathri shows currency conversions</h2>
-
+<h2>Gayathri Nangineni shows currency conversions </h2>
 <form>
-    <label for="baseElement">Enter base amount</label>
-    <input type ="number" id="baseElement" name="baseElement" min=10 max=50 step=2 value=50> <br>
+    <label for="base">Enter base amount </label>
+    <input type="number" id="base" name="fristValue" value="50"> <br>
 
-    <label for="conversionalElement">What is your nickname </label>
-    <input type ="number" id="conversionalElement" name="conversionalElement" value=35 autofocus> <br>
+    <label for="conversion">Enter the conversion rate</label>
+    <input type="number" id="conversion" name="secondValue" value="35"> <br>
 
     <input type="button" onclick="convert()" value="Show conversions">
+
 </form>
-
-
 <p id="result">This text will be replaced </p>
-
-<script>
+<script> 
 function convert(){
-baseElement = document.getElementById("baseElement").value;
-conversionalElement = document.getElementById("conversionalElement").value;
+base = document.getElementById("base").value;
+conversion= document.getElementById("conversion").value;
 toShow = " ";
 for(let i=0;i<5;i++){
 
-    let conversion = baseElement*conversionalElement;
-        toShow = toShow+" "+ baseElement +" is "+ conversion.toFixed(1)+";";
-        baseElement = baseElement*2
+    let conversion1 = base*conversion;
+        toShow = toShow+" "+ base +" is "+ conversion1.toFixed(1)+";";
+        base = base*2
     }
     document.getElementById("result").innerHTML = "Conversions are:" + toShow;
 }
 </script>
-</body>
-</html> 
+
+<form>
+        <label>
+            <input type="radio" name="operation" value="mean" > Average
+        </label><br>
+        <label>
+            <input type="radio" name="operation" value="maximum" > Max
+        </label><br>
+        <label>
+            <input type="radio" name="operation" value="minimum" > Min
+        </label><br>
+
+
+<input type="button" value="Values from the radio group" onclick="chooseOp()">
+</form>
+<p id="result1">This text will be replaced</p>
+
+ <script>
+ 
+ function chooseOp()
+    {
+      const base = parseFloat(document.getElementById("base").value);
+      const conversion = parseFloat(document.getElementById("conversion").value);
+      const operation = document.querySelector('input[name="operation"]:checked').value;
+           
+        out=document.getElementById("result1")
+        let result1;
+        switch (operation) {
+        case "mean":
+                    result1 = (base + conversion) / 2;
+                    out.innerHTML = "Average of " + base + " and " + conversion + " is " + result1
+                    break;
+        case "maximum":
+                    if (base > conversion)
+                        result1 = base
+                    else
+                        result1 = conversion
+
+        out.innerHTML = "Max of " + base + " and " + conversion + " is " + result1
+                 break;
+        case "minimum": 
+                   
+        if (base < conversion)
+                        result1 = base
+                    else
+                        result1 = conversion
+
+                    out.innerHTML = "Min of " + base + " and " + conversion + " is " + result1
+                    break;
+         default:
+                    result1 = "";
+        
+        }
+
+            document.getElementById("result1").innerHTML = `${operation} of ${base} and ${conversion} is ${result1}`;
+        } 
+
+ </script>
+ </body>
+ </html>
